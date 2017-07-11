@@ -1,0 +1,52 @@
+<div class="bodyBackground"></div>
+<section class="table container">
+    <header class="row logoRow">
+        <img src="app/Images/logo.png" alt="Just Cooking">
+    </header>
+
+    <div class="row contentRow">
+        <form name="loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="table form-group">
+                <div class="row" [ngClass]="{ 'has-error': !username.valid }">
+                    <input type="text" class="form-control text-box required" placeholder="Username" name="username"
+                           [(ngModel)]="model.username" #username="ngModel" required/>
+                </div>
+                <div class="row">
+                    <br/>
+                </div>
+                <div class="row" [ngClass]="{ 'has-error': !password.valid }">
+                    <input type="password" class="form-control text-box" placeholder="Password" name="password"
+                           [(ngModel)]="model.password" #password="ngModel" required/>
+                </div>
+                <div class="row">
+                    <br/>
+                </div>
+                <div class="row">
+                    <button [disabled]="loading" class="btn btn-primary btn-sm">Login</button>
+                </div>
+                <div class="row">
+                    <br/>
+                </div>
+                <div class="row">
+                    <div *ngIf="f.submitted" class="alert alert-danger" [hidden]="username.valid && password.valid">
+                        <section *ngIf="f.submitted && (!username.valid || !password.valid)"
+                                 [hidden]="username.valid && password.valid">
+                            <p *ngIf="username.hasError('required')">
+                                <span> Username is required</span>
+                            </p>
+                            <p *ngIf="password.hasError('required')">
+                                <span>Password is required</span>
+                            </p>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="">Forgot your password?</a>
+                </div>
+                <div class="row">
+                    <br/>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
